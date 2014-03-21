@@ -1,0 +1,37 @@
+<div class="well">
+  <p class="pull-right">
+    [<%= link_to "Edit this post", edit_post_path(@post) %>]
+  </p>
+  <p>
+    <%= render @post.categories %>
+  </p>
+    <%= render "shared/content_title", title: @post.title %>
+  <hr/> 
+  <p>Description: 
+    <%= @post.description %>
+  </p>
+  <p>Url:
+    <%= @post.url %>
+  </p>
+  <br/>
+<%= render "shared/errors", obj: @comment %>
+  <%= form_for [@post, @comment] do |f| %>
+    <div class="control-group">
+    <%= f.label :body, "Leave a comment" %>
+    <%= f.text_area :body, rows: 8, class: "span4" %>
+    </div>
+    <%= f.submit "Create comment", class: "btn btn-primary" %>
+  <% end %>
+
+  <%= link_to "Back to All Posts", posts_path %>
+  <p>
+  <h4>Comments:</h4>
+  <% @post.comments.each do |c| %>
+    <ul>
+      <li>
+       <em><%= c.body %></em>
+      <p><span class="quiet">by </span><%= c.user.username %> at <span class="quiet"><%= display_datetime(c.created_at) %></span></p>
+     </li>
+    </ul>
+    <% end %>
+</div>
