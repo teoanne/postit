@@ -1,13 +1,12 @@
-<div class="row">
+
   <div class="span9 well">
     <%= render post.categories %>
      <h4><%= link_to post.title, fix_url(post.url) %></h4>
        <p><%= post.description %></p>
-        <p><span class="quiet">posted by </span><%= post.user.username %> at <span class="quiet"><%= display_datetime(post.created_at) %></span></p>
+        <p><span class="quiet">posted by </span><%= link_to post.user.username, user_path(post.user) %> at <span class="quiet"><%= display_datetime(post.created_at) %></span></p>
          <small>
           <span>
             <%= link_to("#{post.comments.size} comments", post_path(post)) %>
           </span>
         </small>
  </div>
-</div>
