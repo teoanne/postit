@@ -43,10 +43,14 @@ class PostsController < ApplicationController
   end
 
   def vote
-    @vote = Vote.create(voteable: @post, user: current_user, vote: params[:vote]) # this last params here includes both up vote and down vote
-    flash[:notice] = "Your vote was counted"
+    vote = Vote.create(voteable: @post, user: current_user, vote: params[:vote]) # this last params here includes both up vote and down vote
+    
+    if vote.valid?
+      flash[:notice] = "Your vote was counted"
+    else
+      flash[:error] = "You are only allowed to vote once"
+    end
     redirect_to :back
-
   end
 
   private
