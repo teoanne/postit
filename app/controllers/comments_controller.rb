@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :require_user
 
   def index
-    @comment = Comment.all.sort_by{|c| c.total_votes}.reverse
+    # @comment = Comment.all.sort_by{|c| c.total_votes}.reverse
   end
   
   def create
