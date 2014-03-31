@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    # default action is under set_post
     @comment = Comment.new # note this has to be inserted because comment is shown on the post page
   end
 

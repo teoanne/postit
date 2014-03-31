@@ -5,7 +5,8 @@
     <dd><%= @user.username %></dd>
   </dl>
 </div>
-  <h5><%= @user.username %>'s Activities: </h5>
+
+  <h5><%= @user.username.capitalize %>'s Activities: </h5>
   <ul class="nav nav-tabs">
     <li class= "<%= "active" if params[:tab].nil? %>" >
       <%= link_to "Posts (#{@user.posts.count})", user_path(@user) %>
@@ -14,12 +15,13 @@
       <%= link_to "Comments (#{@user.comments.count})", user_path(@user, tab: "comments") %>
     </li>
   </ul>
+
   <% if params[:tab].nil? %>
-    <%= @user.posts.each do |post| %>
+    <% @user.posts.each do |post| %>
       <%= render "posts/post", post: post %>
     <% end %>
     <% elsif params[:tab] == "comments" %>
-    <%= @user.comments.each do |comment| %>
+    <% @user.comments.each do |comment| %>
       <%= render "comments/comment", comment: comment, show_post: true %>
     <% end %>
   <% end %>
