@@ -27,6 +27,6 @@
 <% end %>
 <%= link_to "Back to All Posts", posts_path %>
 <h4>Comments:</h4>
-  <% @post.comments.each do |comment| %>
+  <% @post.reload.comments.each do |comment| %>
     <%= render "comments/comment", comment: comment %>
   <% end %>

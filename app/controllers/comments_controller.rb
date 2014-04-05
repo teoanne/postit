@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   end
   
   def create
-    @post = Post.find(params[:post_id]) # why post_id and not id? because if you check params under binding.pry for this section, you see post_id listed and not just id
+    @post = Post.find_by(slug: params[:post_id]) # why post_id and not id? because if you check params under binding.pry for this section, you see post_id listed and not just id
     @comment = @post.comments.build(params.require(:comment).permit(:body)) # build = creates it in memory
     @comment.user = current_user
 
@@ -19,15 +19,20 @@ class CommentsController < ApplicationController
   end
 
   def vote
-    comment = Comment.find(params[:id])
-    vote = Vote.create(voteable: comment, user: current_user, vote: params[:vote]) #not model backed so no need @vote instance variable
+    @comment = Comment.find(params[:id]) # turned this into an instance variable because we need to access it in the vote.js.erb view file
+    @vote = Vote.create(voteable: @comment, user: current_user, vote: params[:vote]) #not model backed so no need @vote instance variable
 
-    if vote.valid?
-      flash[:notice] = "Your vote was counted"
-    else
-      flash[:error] = "You are only allowed to vote once"
-    end
-      redirect_to :back
-  end
+    respond_to do |format|
+      format.html do
+        if @vote.valid?
+          flash[:notice] = "Your vote was counted"
+        else
+          flash[:error] = "You are only allowed to vote once"
+        end
+          redirect_to :back
+      end
+      format.js # leaving it blank will make it automatically look for the vote js view template
+    end # ends respond_to block
+  end # ends vote action
 
-end
+end # ends class CommentsController

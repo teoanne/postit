@@ -44,14 +44,19 @@ class PostsController < ApplicationController
   end
 
   def vote
-    vote = Vote.create(voteable: @post, user: current_user, vote: params[:vote]) # this last params here includes both up vote and down vote
+    @vote = Vote.create(voteable: @post, user: current_user, vote: params[:vote]) # this last params here includes both up vote and down vote
     
-    if vote.valid?
-      flash[:notice] = "Your vote was counted"
-    else
-      flash[:error] = "You are only allowed to vote once"
+    respond_to do |format|
+      format.html do
+        if @vote.valid?
+          flash[:notice] = "Your vote was counted"
+        else
+          flash[:error] = "You are only allowed to vote once"
+        end
+        redirect_to :back 
+      end
+      format.js # leaving it blank will make it automatically look for the vote js view template
     end
-    redirect_to :back
   end
 
   private
@@ -61,7 +66,7 @@ class PostsController < ApplicationController
   end
 
   def set_post # this is for the before_action above
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:id])
   end
 
 end
