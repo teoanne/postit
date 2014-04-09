@@ -13,7 +13,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'voteable_sueanne', path: "/Users/sueanneteo/voteable_gem"
+gem 'voteable_sueanne'
 gem 'sluggable_sueanne'
 
 group :doc do
