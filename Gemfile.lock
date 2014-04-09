@@ -1,5 +1,5 @@
 PATH
-  remote: /Users/sueanneteo/code/sluggable_gem
+  remote: /Users/sueanneteo/sluggable_gem
   specs:
     sluggable_sueanne (0.0.0)
 
