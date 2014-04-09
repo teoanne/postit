@@ -14,7 +14,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'voteable_sueanne', path: "/Users/sueanneteo/voteable_gem"
-gem 'sluggable_sueanne', path: "/Users/sueanneteo/code/sluggable_gem"
+gem 'sluggable_sueanne', path: "/Users/sueanneteo/sluggable_gem"
 
 group :doc do
   gem 'sdoc', require: false
