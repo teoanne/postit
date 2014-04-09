@@ -1,9 +1,4 @@
 PATH
-  remote: /Users/sueanneteo/sluggable_gem
-  specs:
-    sluggable_sueanne (0.0.0)
-
-PATH
   remote: /Users/sueanneteo/voteable_gem
   specs:
     voteable_sueanne (0.0.0)
@@ -109,6 +104,7 @@ GEM
       json (>= 1.1.3)
       rdoc (~> 3.10)
     slop (3.4.5)
+    sluggable_sueanne (0.0.0)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -149,7 +145,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 4.0.0)
   sdoc
-  sluggable_sueanne!
+  sluggable_sueanne
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)
