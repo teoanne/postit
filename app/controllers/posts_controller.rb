@@ -10,6 +10,11 @@ class PostsController < ApplicationController
   def show
     # default action is under set_post
     @comment = Comment.new # note this has to be inserted because comment is shown on the post page
+    respond_to do |format|
+      format.html
+      format.json { render json: @post }
+      format.xml { render xml: @post }
+    end
   end
 
   def new

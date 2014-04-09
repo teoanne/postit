@@ -14,8 +14,8 @@
         <%= link_to category.name, category_path(category)%>
       </li>
   <% end %>
+  <% if logged_in? && current_user.admin? %>
   <li class="divider"></li>
-    <% if logged_in? && current_user.admin? %>
     <li>
       <%= link_to(new_category_path) do %>
         <i class="icon-plus"></i>
@@ -25,6 +25,7 @@
       <% end %>
   </ul>
 </div>
+
 <div class="nav_item">
   <% if logged_in? %>
     <div class="nav_item">
@@ -35,6 +36,7 @@
         <%= current_user.username %> 
         <span class="caret"></span>
       <% end %>
+      
       <% if logged_in? %>
       <ul class="dropdown-menu">
         <li>
