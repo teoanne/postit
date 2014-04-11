@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   include Sluggable
 
   belongs_to :user
-  has_many :comments, dependent: :destroy
+  has_many :comments
   has_many :post_categories
   has_many :categories, through: :post_categories
 
