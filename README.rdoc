@@ -1,4 +1,4 @@
-== Postit-Template ==
+== Postit
 
 1. Postit-template is an app developed as part of the second Ruby on Rails course i took with Tealeaf Academy, a 4-month online Rails development course.
 
